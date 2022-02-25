@@ -1,4 +1,4 @@
-package resring
+package bytefifo
 
 import (
 	"testing"
@@ -26,7 +26,7 @@ func TestValue(t *testing.T) {
 	assert.Empty(err, "Error detecting expected values")
 	assert.Equal(testValue1, []byte{}, "Can't Detect expected initalized value")
 
-	testRR2 := ResRing{}
+	testRR2 := ByteFifo{}
 	_, err = testRR2.Value()
 	assert.EqualError(err, BaseTypeErr.Error(), "Can't detect bad type for value extraction")
 }
@@ -39,7 +39,7 @@ func TestTimeStamp(t *testing.T) {
 	assert.Empty(err, "Error detecting expected values")
 	assert.NotEqual(testValue1, time.Time{}, "Initalization used zero values for Time value")
 
-	testRR2 := ResRing{}
+	testRR2 := ByteFifo{}
 	_, err = testRR2.TimeStamp()
 	assert.EqualError(err, BaseTypeErr.Error(), "Can't detect bad type for timestamp extraction")
 }
@@ -56,7 +56,7 @@ func TestAdd(t *testing.T) {
 	err = testRR1.Add(testSlice)
 	assert.EqualError(err, SameDataErr.Error(), "Added Duplicate Data in Error")
 
-	testRR2 := ResRing{}
+	testRR2 := ByteFifo{}
 	err = testRR2.Add(testSlice)
 	assert.EqualError(err, BaseTypeErr.Error(), "Failed to Recognize Improperly Initialized baseRing")
 
