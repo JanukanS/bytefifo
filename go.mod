@@ -1,4 +1,4 @@
-module bytefifo
+module github.com/JanukanS/bytefifo
 
 go 1.17
 
